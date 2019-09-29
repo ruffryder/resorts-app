@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Title from "./Title";
 import { FaCocktail, FaHiking, FaShuttleVan, FaBeer } from "react-icons/fa";
-import { isTemplateElement } from "@babel/types";
 
 export default class Services extends Component {
   state = {
