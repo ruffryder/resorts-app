@@ -1,8 +1,9 @@
 import React from "react";
-import Hero from "../components/Hero";
-import Banner from "../components/Banner";
+import Hero from "../components/Hero/Hero";
+import Banner from "../components/Banner/Banner";
 import { Link } from "react-router-dom";
-import RoomsContainer from "../components/RoomsContainer";
+import RoomsContainer from "../components/Rooms/RoomsContainer";
+
 function Rooms() {
   return (
     <>

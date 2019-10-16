@@ -4,9 +4,10 @@
   box-sizing: border-box;
 }
 :root {
-  --primaryColor: #af9a7d;
+  --primaryColor: #d8354b;
   --mainWhite: #fff;
   --offWhite: #f7f7f7;
+  --navbar-background: rgba(247, 247, 247, 0.75);
   --mainBlack: #222;
   --mainGrey: #ececec;
   --darkGrey: #cfcfcf;
@@ -57,7 +58,7 @@ h6 {
   display: inline-block;
   text-decoration: none;
   letter-spacing: var(--mainSpacing);
-  color: var(--mainBlack);
+  color: var(--mainWhite);
   background: var(--primaryColor);
   padding: 0.4rem 0.9rem;
   border: 3px solid var(--primaryColor);
@@ -67,7 +68,6 @@ h6 {
 }
 .btn-primary:hover {
   background: transparent;
-  color: var(--primaryColor);
 }
 .loading {
   text-transform: capitalize;
@@ -93,13 +93,16 @@ h6 {
   top: 0;
   left: 0;
   width: 100%;
-  padding: 0.75rem 2rem;
-  background: var(--offWhite);
+  padding: 0.75rem 2rem 0.3rem 2rem;
+  background: var(--navbar-background);
   z-index: 1;
 }
 .nav-header {
   display: flex;
   justify-content: space-between;
+}
+.nav-header img {
+  width: 55%;
 }
 .nav-btn {
   background: transparent;
@@ -123,7 +126,7 @@ h6 {
   padding: 1rem 0;
   color: var(--mainBlack);
   transition: var(--mainTransition);
-  text-align: center;
+  text-align: right;
   font-size: 1rem;
   font-weight: 600;
   letter-spacing: var(--mainSpacing);
@@ -152,21 +155,22 @@ h6 {
   .nav-links a {
     margin: 0 1rem;
     padding: 0.5rem 0;
+    text-align: center;
   }
 }
 /* end of navbar */
 /* Hero */
 .defaultHero,
 .roomsHero {
-  min-height: calc(100vh - 66px);
-  background: url("./images/defaultBcg.jpeg") center/cover no-repeat;
+  min-height: calc(70vh);
+  background: url("./images/bg-home.jpg") center/cover no-repeat;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: -66px;
 }
 .roomsHero {
-  background-image: url("./images/room-2.jpeg");
-  min-height: 60vh;
+  background-image: url("./images/bg-hero-room.jpg");
 }
 /* End of Hero */
 /* Banner */
@@ -212,7 +216,7 @@ h6 {
 /* Title */
 .section-title {
   text-align: center;
-  margin-bottom: 4rem;
+  margin-bottom: 3rem;
 }
 .section-title h4 {
   font-size: 2rem;
@@ -230,7 +234,7 @@ h6 {
 
 /* services */
 .services {
-  padding: 5rem 0;
+  padding: 4rem 0;
 }
 .services {
   background: var(--darkGrey);

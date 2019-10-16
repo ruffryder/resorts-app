@@ -1,11 +1,14 @@
 import React, { Component } from "react";
-import defaultBG from "../images/room-1.jpeg";
-import Banner from "../components/Banner";
+import defaultBG from "../images/bg-room.jpg";
+import Banner from "../components/Banner/Banner";
 import { Link } from "react-router-dom";
 import { RoomContext } from "../context";
-import StyledHero from "../components/StyledHero";
+import StyledHero from "../components/Hero/StyledHero";
+import PropTypes from "prop-types";
 
-export default class SingleRoom extends Component {
+class SingleRoom extends Component {
+  static contextType = RoomContext;
+
   constructor(props) {
     super(props);
     this.state = {
@@ -13,15 +16,15 @@ export default class SingleRoom extends Component {
       defaultBG
     };
   }
-  static contextType = RoomContext;
 
   render() {
     const { getRoom } = this.context;
     const room = getRoom(this.state.slug);
+
     if (!room) {
       return (
         <div className="error">
-          <h3>No such room found</h3>
+          <h3>Room was not found</h3>
           <Link to="/rooms" className="btn-primary">
             Back to rooms
           </Link>
@@ -39,7 +42,7 @@ export default class SingleRoom extends Component {
       pets,
       images
     } = room;
-    const [mainImg, ...defaultImg] = images;
+    const [mainImg, ...defaultImages] = images;
     return (
       <>
         <StyledHero img={mainImg}>
@@ -51,7 +54,7 @@ export default class SingleRoom extends Component {
         </StyledHero>
         <section className="single-room">
           <div className="single-room-images">
-            {defaultImg.map((item, index) => {
+            {defaultImages.map((item, index) => {
               return <img key={index} src={item} alt={name} />;
             })}
           </div>
@@ -63,7 +66,9 @@ export default class SingleRoom extends Component {
             <article className="info">
               <h3>info</h3>
               <h6>price: ${price}</h6>
-              <h6>size: ${size} SQFT</h6>
+              <h6>
+                size: {size} ft<sup>2</sup>
+              </h6>
               <h6>
                 max capacity:{" "}
                 {capacity > 1 ? `${capacity} people` : `${capacity} person`}
@@ -85,3 +90,13 @@ export default class SingleRoom extends Component {
     );
   }
 }
+
+SingleRoom.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      slug: PropTypes.string.isRequired
+    }).isRequired
+  }).isRequired
+};
+
+export default SingleRoom;

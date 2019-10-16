@@ -1,13 +1,13 @@
 import React, { useContext } from "react";
-import { RoomContext } from "../context";
-import Title from "../components/Title";
+import { RoomContext } from "../../context";
+import Title from "../Title/Title";
 
 //get unique values
 const getUnique = (items, value) => {
   return [...new Set(items.map(item => item[value]))];
 };
 
-export default function RoomsFilter({ rooms }) {
+function RoomsFilter({ rooms }) {
   const context = useContext(RoomContext);
   const {
     handleChange,
@@ -22,10 +22,11 @@ export default function RoomsFilter({ rooms }) {
     pets
   } = context;
 
-  //get unique types
+  //get unique type values
   let types = getUnique(rooms, "type");
   types = ["all", ...types];
-  //map to JSX
+
+  // create option html elements for each type
   types = types.map((item, index) => {
     return (
       <option value={item} key={index}>
@@ -33,9 +34,11 @@ export default function RoomsFilter({ rooms }) {
       </option>
     );
   });
+
   //get unique capacity values
   let capacities = getUnique(rooms, "capacity");
-  //map to JSX
+
+  //create option html elements for each capacity value
   capacities = capacities.map((item, index) => {
     return (
       <option value={item} key={index}>
@@ -94,7 +97,9 @@ export default function RoomsFilter({ rooms }) {
         {/*  size filter input */}
 
         <div className="form-group">
-          <label htmlFor="size">room size (SQFT)</label>
+          <label htmlFor="size">
+            room size (ft<sup>2</sup>)
+          </label>
           <div className="size-inputs">
             <input
               className="size-input"
@@ -138,9 +143,10 @@ export default function RoomsFilter({ rooms }) {
             <label htmlFor="pets">pets</label>
           </div>
         </div>
-
         {/*END of  extras filter input */}
       </form>
     </section>
   );
 }
+
+export default RoomsFilter;
