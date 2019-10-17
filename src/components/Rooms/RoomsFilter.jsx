@@ -82,7 +82,6 @@ function RoomsFilter({ rooms }) {
         <div className="form-group">
           <label htmlFor="price">room price ${price}</label>
           <input
-            className="form-control"
             type="range"
             name="price"
             id="price"
@@ -122,26 +121,28 @@ function RoomsFilter({ rooms }) {
         {/*END of  size filter input */}
         {/*extras filter input */}
         <div className="form-group">
-          <div className="single-extra">
-            <input
-              type="checkbox"
-              name="breakfast"
-              id="breakfast"
-              checked={breakfast}
-              onChange={handleChange}
-            />
-            <label htmlFor="breakfast">breakfast</label>
-          </div>
-          <div className="single-extra">
-            <input
-              type="checkbox"
-              name="pets"
-              id="pets"
-              checked={pets}
-              onChange={handleChange}
-            />
-            <label htmlFor="pets">pets</label>
-          </div>
+          <ul class="ks-cboxtags">
+            <li>
+              <input
+                type="checkbox"
+                id="breakfast"
+                name="breakfast"
+                checked={breakfast}
+                onChange={handleChange}
+              />
+              <label htmlFor="breakfast">Breakfast</label>
+            </li>
+            <li>
+              <input
+                type="checkbox"
+                id="pets"
+                name="pets"
+                checked={pets}
+                onChange={handleChange}
+              />
+              <label htmlFor="pets">Pets</label>
+            </li>
+          </ul>
         </div>
         {/*END of  extras filter input */}
       </form>

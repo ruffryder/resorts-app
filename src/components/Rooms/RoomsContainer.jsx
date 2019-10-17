@@ -4,7 +4,7 @@ import RoomsList from "./RoomsList";
 import { RoomConsumer } from "../../context";
 import Loading from "../Loading/Loading";
 
-export default function RoomsContainer() {
+function RoomsContainer() {
   return (
     <RoomConsumer>
       {value => {
@@ -22,3 +22,5 @@ export default function RoomsContainer() {
     </RoomConsumer>
   );
 }
+
+export default RoomsContainer;
