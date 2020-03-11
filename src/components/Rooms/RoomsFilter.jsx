@@ -121,7 +121,7 @@ function RoomsFilter({ rooms }) {
         {/*END of  size filter input */}
         {/*extras filter input */}
         <div className="form-group">
-          <ul class="ks-cboxtags">
+          <ul className="ks-cboxtags">
             <li>
               <input
                 type="checkbox"
